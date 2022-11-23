@@ -25,6 +25,8 @@ public class NettyClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) {
+                        // 指定连接数据读写逻辑
+                        ch.pipeline().addLast(new FirstClientHandler());
                     }
                 });
         // 4.建立连接
